@@ -69,6 +69,7 @@ class Keyboard:
 
     # TODO: Modify this method. You may delete this comment when you are done.
     def update(self, feedback_colors, guessed_word):
+
         """
         Updates the color of each letter on the keyboard based on feedback from a guessed word.
 
@@ -109,8 +110,24 @@ class Keyboard:
         post: Returns a formatted string with each letter colored according to feedback
               and arranged to match a typical keyboard layout.
         """
-        return ""
 
+        # All letters are colored gray
+        all_letters = color_word(NO_COLOR,"qwertyuiopasdfghjklzxcvbnm")
+        keyboard = ""
+        counter = 0
+        for i in range(10):
+            keyboard += all_letters[i]
+            counter += 1
+        keyboard += "\n "
+        for i in range(9):
+            keyboard += all_letters[counter]
+            counter += 1
+        keyboard += "\n   "
+        for i in range(7):
+            keyboard += all_letters[counter]
+            counter += 1
+
+        return all_letters
 
 class WordFamily:
     """
@@ -321,11 +338,42 @@ def get_feedback_colors(secret_word, guessed_word):
           - Letters not in secret_word are marked with NOT_IN_WORD_COLOR. The list will be of
             length 5 with the ANSI coloring in each index as the returned value.
     """
+    # feedback = [None] * NUM_LETTERS
+
+    # # Modify this! This is just starter code.
+    # for i in range(NUM_LETTERS):
+    #     feedback[i] = WRONG_SPOT_COLOR
+
+    index_list = [0,1,2,3,4]
     feedback = [None] * NUM_LETTERS
+    guess_list = list(guessed_word)
+    true_list = list(secret_word)
+    guess_dict = {}
+    true_dict = {}
+    for char in guessed_word:
+        if char not in guess_dict:
+            guess_dict[char] = 1
+        else:
+            guess_dict[char] += 1
+    for char in secret_word:
+        if char not in true_dict:
+            true_dict[char] = 1
+        else:
+            true_dict[char] += 1
 
     # Modify this! This is just starter code.
     for i in range(NUM_LETTERS):
-        feedback[i] = WRONG_SPOT_COLOR
+        if guess_list[i] == true_list[i] and true_dict[guess_list[i]] != 0:
+            feedback[i] = CORRECT_COLOR
+            true_dict[guess_list[i]] -= 1
+            index_list.remove(i)
+    for j in index_list:
+        if guess_list[j] in true_list and guess_list[j] != true_list[j] \
+        and true_dict[guess_list[j]] != 0:
+            feedback[j] = WRONG_SPOT_COLOR
+            true_dict[guess_list[j]] -= 1
+        else:
+            feedback[j] = NOT_IN_WORD_COLOR
 
     # You do not have to change this return statement
     return feedback
