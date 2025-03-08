@@ -1,0 +1,53 @@
+Welcome to Command Line Evil Wordle!
+
+[1mH[0m[1mo[0m[1mw[0m[1m [0m[1mT[0m[1mo[0m[1m [0m[1mP[0m[1ml[0m[1ma[0m[1my[0m
+Guess the secret word in 6 tries.
+Each guess must be a valid 5-letter word.
+The color of the letters will change to show
+how close your guess was.
+
+Examples:
+[3;1;97;101mw[0m[3;1me[0m[3;1ma[0m[3;1mr[0m[3;1my[0m
+[1mw[0m is in the word and in the correct spot.
+[3;1mp[0m[3;1;97;104mi[0m[3;1ml[0m[3;1ml[0m[3;1ms[0m
+[1mi[0m is in the word but in the wrong spot.
+[3;1mv[0m[3;1ma[0m[3;1mg[0m[3;1mu[0m[3;1me[0m
+[1mu[0m is not in the word in any spot.
+
+Enter your 1st guess: bread
+                      [3;1mb[0m[3;1mr[0m[3;1me[0m[3;1ma[0m[3;1md[0m
+[0mq[0m [0mw[0m [3;1me[0m [3;1mr[0m [0mt[0m [0my[0m [0mu[0m [0mi[0m [0mo[0m [0mp[0m
+ [3;1ma[0m [0ms[0m [3;1md[0m [0mf[0m [0mg[0m [0mh[0m [0mj[0m [0mk[0m [0ml[0m
+   [0mz[0m [0mx[0m [0mc[0m [0mv[0m [3;1mb[0m [0mn[0m [0mm[0m
+
+Enter your 2nd guess: train
+                      [3;1mt[0m[3;1mr[0m[3;1ma[0m[3;1mi[0m[3;1mn[0m
+[0mq[0m [0mw[0m [3;1me[0m [3;1mr[0m [3;1mt[0m [0my[0m [0mu[0m [3;1mi[0m [0mo[0m [0mp[0m
+ [3;1ma[0m [0ms[0m [3;1md[0m [0mf[0m [0mg[0m [0mh[0m [0mj[0m [0mk[0m [0ml[0m
+   [0mz[0m [0mx[0m [0mc[0m [0mv[0m [3;1mb[0m [3;1mn[0m [0mm[0m
+
+Enter your 3rd guess: prays
+                      [3;1mp[0m[3;1mr[0m[3;1ma[0m[3;1my[0m[3;1;97;101ms[0m
+[0mq[0m [0mw[0m [3;1me[0m [3;1mr[0m [3;1mt[0m [3;1my[0m [0mu[0m [3;1mi[0m [0mo[0m [3;1mp[0m
+ [3;1ma[0m [3;1;97;101ms[0m [3;1md[0m [0mf[0m [0mg[0m [0mh[0m [0mj[0m [0mk[0m [0ml[0m
+   [0mz[0m [0mx[0m [0mc[0m [0mv[0m [3;1mb[0m [3;1mn[0m [0mm[0m
+
+Enter your 4th guess: mushy
+                      [3;1mm[0m[3;1mu[0m[3;1;97;104ms[0m[3;1mh[0m[3;1my[0m
+[0mq[0m [0mw[0m [3;1me[0m [3;1mr[0m [3;1mt[0m [3;1my[0m [3;1mu[0m [3;1mi[0m [0mo[0m [3;1mp[0m
+ [3;1ma[0m [3;1;97;101ms[0m [3;1md[0m [0mf[0m [0mg[0m [3;1mh[0m [0mj[0m [0mk[0m [0ml[0m
+   [0mz[0m [0mx[0m [0mc[0m [0mv[0m [3;1mb[0m [3;1mn[0m [3;1mm[0m
+
+Enter your 5th guess: fowls
+                      [3;1mf[0m[3;1;97;101mo[0m[3;1mw[0m[3;1ml[0m[3;1;97;101ms[0m
+[0mq[0m [3;1mw[0m [3;1me[0m [3;1mr[0m [3;1mt[0m [3;1my[0m [3;1mu[0m [3;1mi[0m [3;1;97;101mo[0m [3;1mp[0m
+ [3;1ma[0m [3;1;97;101ms[0m [3;1md[0m [3;1mf[0m [0mg[0m [3;1mh[0m [0mj[0m [0mk[0m [3;1ml[0m
+   [0mz[0m [0mx[0m [0mc[0m [0mv[0m [3;1mb[0m [3;1mn[0m [3;1mm[0m
+
+Enter your 6th guess: socks
+                      [3;1ms[0m[3;1;97;101mo[0m[3;1mc[0m[3;1;97;101mk[0m[3;1;97;101ms[0m
+[0mq[0m [3;1mw[0m [3;1me[0m [3;1mr[0m [3;1mt[0m [3;1my[0m [3;1mu[0m [3;1mi[0m [3;1;97;101mo[0m [3;1mp[0m
+ [3;1ma[0m [3;1;97;101ms[0m [3;1md[0m [3;1mf[0m [0mg[0m [3;1mh[0m [0mj[0m [3;1;97;101mk[0m [3;1ml[0m
+   [0mz[0m [0mx[0m [3;1mc[0m [0mv[0m [3;1mb[0m [3;1mn[0m [3;1mm[0m
+
+Sorry, you've run out of attempts. The correct word was '[3;1;97;101mk[0m[3;1;97;101mo[0m[3;1;97;101mo[0m[3;1;97;101mk[0m[3;1;97;101ms[0m'.

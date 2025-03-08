@@ -1,0 +1,53 @@
+Welcome to Command Line Evil Wordle!
+
+[1mH[0m[1mo[0m[1mw[0m[1m [0m[1mT[0m[1mo[0m[1m [0m[1mP[0m[1ml[0m[1ma[0m[1my[0m
+Guess the secret word in 6 tries.
+Each guess must be a valid 5-letter word.
+The color of the letters will change to show
+how close your guess was.
+
+Examples:
+[3;1;97;101mw[0m[3;1me[0m[3;1ma[0m[3;1mr[0m[3;1my[0m
+[1mw[0m is in the word and in the correct spot.
+[3;1mp[0m[3;1;97;104mi[0m[3;1ml[0m[3;1ml[0m[3;1ms[0m
+[1mi[0m is in the word but in the wrong spot.
+[3;1mv[0m[3;1ma[0m[3;1mg[0m[3;1mu[0m[3;1me[0m
+[1mu[0m is not in the word in any spot.
+
+Enter your 1st guess: salet
+                      [3;1ms[0m[3;1ma[0m[3;1ml[0m[3;1me[0m[3;1mt[0m
+[0mq[0m [0mw[0m [3;1me[0m [0mr[0m [3;1mt[0m [0my[0m [0mu[0m [0mi[0m [0mo[0m [0mp[0m
+ [3;1ma[0m [3;1ms[0m [0md[0m [0mf[0m [0mg[0m [0mh[0m [0mj[0m [0mk[0m [3;1ml[0m
+   [0mz[0m [0mx[0m [0mc[0m [0mv[0m [0mb[0m [0mn[0m [0mm[0m
+
+Enter your 2nd guess: chimp
+                      [3;1mc[0m[3;1mh[0m[3;1mi[0m[3;1mm[0m[3;1mp[0m
+[0mq[0m [0mw[0m [3;1me[0m [0mr[0m [3;1mt[0m [0my[0m [0mu[0m [3;1mi[0m [0mo[0m [3;1mp[0m
+ [3;1ma[0m [3;1ms[0m [0md[0m [0mf[0m [0mg[0m [3;1mh[0m [0mj[0m [0mk[0m [3;1ml[0m
+   [0mz[0m [0mx[0m [3;1mc[0m [0mv[0m [0mb[0m [0mn[0m [3;1mm[0m
+
+Enter your 3rd guess: round
+                      [3;1mr[0m[3;1;97;101mo[0m[3;1mu[0m[3;1mn[0m[3;1md[0m
+[0mq[0m [0mw[0m [3;1me[0m [3;1mr[0m [3;1mt[0m [0my[0m [3;1mu[0m [3;1mi[0m [3;1;97;101mo[0m [3;1mp[0m
+ [3;1ma[0m [3;1ms[0m [3;1md[0m [0mf[0m [0mg[0m [3;1mh[0m [0mj[0m [0mk[0m [3;1ml[0m
+   [0mz[0m [0mx[0m [3;1mc[0m [0mv[0m [0mb[0m [3;1mn[0m [3;1mm[0m
+
+Enter your 4th guess: boffo
+                      [3;1mb[0m[3;1;97;101mo[0m[3;1mf[0m[3;1mf[0m[3;1;97;104mo[0m
+[0mq[0m [0mw[0m [3;1me[0m [3;1mr[0m [3;1mt[0m [0my[0m [3;1mu[0m [3;1mi[0m [3;1;97;101mo[0m [3;1mp[0m
+ [3;1ma[0m [3;1ms[0m [3;1md[0m [3;1mf[0m [0mg[0m [3;1mh[0m [0mj[0m [0mk[0m [3;1ml[0m
+   [0mz[0m [0mx[0m [3;1mc[0m [0mv[0m [3;1mb[0m [3;1mn[0m [3;1mm[0m
+
+Enter your 5th guess: gawks
+                      [3;1mg[0m[3;1ma[0m[3;1;97;104mw[0m[3;1mk[0m[3;1ms[0m
+[0mq[0m [3;1;97;104mw[0m [3;1me[0m [3;1mr[0m [3;1mt[0m [0my[0m [3;1mu[0m [3;1mi[0m [3;1;97;101mo[0m [3;1mp[0m
+ [3;1ma[0m [3;1ms[0m [3;1md[0m [3;1mf[0m [3;1mg[0m [3;1mh[0m [0mj[0m [3;1mk[0m [3;1ml[0m
+   [0mz[0m [0mx[0m [3;1mc[0m [0mv[0m [3;1mb[0m [3;1mn[0m [3;1mm[0m
+
+Enter your 6th guess: woozy
+                      [3;1;97;101mw[0m[3;1;97;101mo[0m[3;1;97;101mo[0m[3;1;97;101mz[0m[3;1;97;101my[0m
+[0mq[0m [3;1;97;101mw[0m [3;1me[0m [3;1mr[0m [3;1mt[0m [3;1;97;101my[0m [3;1mu[0m [3;1mi[0m [3;1;97;101mo[0m [3;1mp[0m
+ [3;1ma[0m [3;1ms[0m [3;1md[0m [3;1mf[0m [3;1mg[0m [3;1mh[0m [0mj[0m [3;1mk[0m [3;1ml[0m
+   [3;1;97;101mz[0m [0mx[0m [3;1mc[0m [0mv[0m [3;1mb[0m [3;1mn[0m [3;1mm[0m
+
+Congratulations! You guessed the word '[3;1;97;101mw[0m[3;1;97;101mo[0m[3;1;97;101mo[0m[3;1;97;101mz[0m[3;1;97;101my[0m' correctly.
