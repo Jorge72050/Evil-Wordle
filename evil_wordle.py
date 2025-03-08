@@ -91,8 +91,12 @@ class Keyboard:
         # feedback is a list of colors with each index containing the color of the corresponding character in guessed_word
         # returns the colored word in a single string
         colored_word = color_word(feedback_colors, guessed_word)
-        keyboard = Keyboard.__str__() # ??
-        
+        keyboard = str(Keyboard)
+        count = 0
+        word_list = list(guessed_word)
+        for i in range(26):
+            if keyboard[i] in word_list:
+                color_word(feedback_colors[word_list.index(guessed_word)], keyboard[i] )
 
     # TODO: Modify this method. You may delete this comment when you are done.
     def __str__(self):
