@@ -88,6 +88,12 @@ class Keyboard:
         post: None
         """
 
+        # feedback is a list of colors with each index containing the color of the corresponding character in guessed_word
+        # returns the colored word in a single string
+        colored_word = color_word(feedback_colors, guessed_word)
+        keyboard = Keyboard.__str__() # ??
+        
+
     # TODO: Modify this method. You may delete this comment when you are done.
     def __str__(self):
         """
