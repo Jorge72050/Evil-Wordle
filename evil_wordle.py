@@ -181,6 +181,15 @@ class WordFamily:
         self.words = words
         self.difficulty = 0
         # TODO: implement the difficulty calculation here.
+        len_tup = len(feedback_colors)
+        for i in range(len_tup):
+            if feedback_colors[i] == NOT_IN_WORD_COLOR:
+                self.difficulty += 2
+            elif feedback_colors[i] == WRONG_SPOT_COLOR:
+                self.difficulty += 1
+            elif feedback_colors[i] == CORRECT_COLOR:
+                self.difficulty += 0
+
 
     # TODO: Modify this method. You may delete this comment when you are done.
     def __lt__(self, other):
@@ -195,6 +204,18 @@ class WordFamily:
             raises NotImplementedError with the message: "< operator only valid 
             for WordFamily comparisons." if `other` is not a WordFamily instance.
         """
+        # Raises an error if other is not a WordFamily object
+        if not isinstance(other, WordFamily):
+             raise NotImplementedError("< operator only valid for WordFamily comparisons.")
+        # First compares the amount of words
+        if len(self.words) < len(other.words):
+            return True
+        # Then compares difficulty scores
+        if self.difficulty < other.difficulty:
+            return True
+        # Finally compares lexicographical order
+        if self.feedback_colors < other.feedback_colors:
+            return True
         return False
 
     # DO NOT change this method.
