@@ -358,7 +358,48 @@ def fast_sort(lst):
     post: Returns a new list that is sorted based on the items in lst.
 
     """
-    return lst[:]
+    # base case or if list is empty or one elem
+    if len(lst) <= 1:
+        return lst
+
+    # sets up merge split
+    mid = len(lst) // 2
+    left = lst[:mid] # contains beg -> not mid
+    right = lst[mid:] # contains mid -> end
+
+    # redefines left and right so every time it recursively calls
+    # on itself the mini lists will be stored into left and right again
+    left = fast_sort(left)
+    right = fast_sort(right)
+
+    # creates new list
+    final_lst = [None] * len(lst)
+
+    # keeping track of position in split lists.
+    left_index = 0 #i
+    right_index = 0 #j
+    final_index = 0 #k
+
+    # iterating through each elem in split lists
+    while left_index < len(left) and right_index < len(right):
+        if left[left_index] <= right[right_index]:
+            final_lst[final_index] = left[left_index]
+            left_index += 1
+        else:
+            final_lst[final_index] = right[right_index]
+            right_index += 1
+        final_index += 1
+    while left_index < len(left):
+        final_lst[final_index] = left[left_index]
+        left_index += 1
+        final_index += 1
+    while right_index < len(right):
+        final_lst[final_index] = right[right_index]
+        right_index += 1
+        final_index += 1
+    return final_lst
+
+
 
 
 # TODO: Modify this helper function. You may delete this comment when you are done.
