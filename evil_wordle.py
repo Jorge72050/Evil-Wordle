@@ -125,19 +125,28 @@ class Keyboard:
         all_letters = color_word(NO_COLOR,"qwertyuiopasdfghjklzxcvbnm")
         keyboard = ""
         counter = 0
+        
+        # iterates through the first 10 letters
         for i in range(10):
-            keyboard += all_letters[i]
+            keyboard += all_letters[i] + " "
             counter += 1
+        keyboard = keyboard[:-1] # gets rid of last space of row
         keyboard += "\n "
+        
+        # counter should be 10, iterates through the next 9 letters
         for i in range(9):
-            keyboard += all_letters[counter]
+            keyboard += all_letters[counter] + " "
             counter += 1
+        keyboard = keyboard[:-1] # gets rid of last space of row
         keyboard += "\n   "
+        
+        # counter should be 19, iterates through the next 7 letters
         for i in range(7):
-            keyboard += all_letters[counter]
+            keyboard += all_letters[counter] + " "
             counter += 1
+        keyboard = keyboard[:-1] # gets rid of last space of row
 
-        return all_letters
+        return keyboard
 
 class WordFamily:
     """
