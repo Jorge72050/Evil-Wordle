@@ -481,8 +481,34 @@ def get_feedback(remaining_secret_words, guessed_word):
             3. Lexicographical ordering of the feedback (ASCII value comparisons)
     """
     # Modify this! This is just starter code.
-    feedback_colors = get_feedback_colors(remaining_secret_words[0], guessed_word)
+    feedback_colors = []
+    family_list = []
+    secret_wordlen = len(remaining_secret_words)
 
+    # Loop to get all possible feedback colors
+    for i in range(len(secret_wordlen)):
+        color = get_feedback_colors(remaining_secret_words[i], guessed_word)
+        if color not in feedback_colors:
+            feedback_colors.append(feedback_colors)
+
+    color_len = len(feedback_colors)
+    for j in range(color_len):
+    # Creating grouped list of words for every iteration and checking to 
+    # See if the feedback for that word is equal to the current color
+        word_list = []
+        current_color = feedback_colors[j]
+
+        # Looping through all words
+        for k in range(secret_wordlen):
+            if get_feedback_colors(remaining_secret_words[k], guessed_word) == current_color:
+                word_list.append(remaining_secret_words[k])           
+        # Creating new families based on each feedback scheme and the
+        # words that match that scheme
+        new_family = WordFamily(current_color, word_list)
+        family_list.append(new_family)   
+    # Sorts words then grabs the words from the hardest word family
+    sorted_fam = fast_sort(family_list)
+    remaining_secret_words = (sorted_fam[0]).words
     return feedback_colors, remaining_secret_words
 
 
