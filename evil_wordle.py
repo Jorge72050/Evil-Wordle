@@ -90,13 +90,31 @@ class Keyboard:
 
         # feedback is a list of colors with each index containing the color of the corresponding character in guessed_word
         # returns the colored word in a single string
-        colored_word = color_word(feedback_colors, guessed_word)
         keyboard = str(Keyboard)
-        count = 0
         word_list = list(guessed_word)
-        for i in range(26):
-            if keyboard[i] in word_list:
-                color_word(feedback_colors[word_list.index(guessed_word)], keyboard[i] )
+        word_len = len(guessed_word)
+
+        # Looping through all 5 indexes
+        for i in range(word_len):
+
+            # Setting current letter and corresponding color
+            current_letter = word_list[i]
+            current_color = feedback_colors[i]
+            for char in keyboard:
+
+                # If char is the current letter and the corresponding color is green, then
+                # The char is updated to have the correct color
+                if char == current_letter and current_color == CORRECT_COLOR:
+                    char = color_word(char, current_color)
+
+                # If char is the current letter and color is wrong spot color, updates
+                # Only if char does not have the correct color
+                elif char == current_letter and current_color == WRONG_SPOT_COLOR:
+                    if char != color_word(char, CORRECT_COLOR):
+                        char = color_word(char, current_color)
+                
+                else:
+                    char = color_word(char, NO_COLOR)
 
     # TODO: Modify this method. You may delete this comment when you are done.
     def __str__(self):
@@ -125,21 +143,18 @@ class Keyboard:
         all_letters = color_word(NO_COLOR,"qwertyuiopasdfghjklzxcvbnm")
         keyboard = ""
         counter = 0
-        
-        # iterates through the first 10 letters
+             # iterates through the first 10 letters
         for i in range(10):
             keyboard += all_letters[i] + " "
             counter += 1
         keyboard = keyboard[:-1] # gets rid of last space of row
         keyboard += "\n "
-        
         # counter should be 10, iterates through the next 9 letters
         for i in range(9):
             keyboard += all_letters[counter] + " "
             counter += 1
         keyboard = keyboard[:-1] # gets rid of last space of row
         keyboard += "\n   "
-        
         # counter should be 19, iterates through the next 7 letters
         for i in range(7):
             keyboard += all_letters[counter] + " "
@@ -206,7 +221,7 @@ class WordFamily:
         """
         # Raises an error if other is not a WordFamily object
         if not isinstance(other, WordFamily):
-             raise NotImplementedError("< operator only valid for WordFamily comparisons.")
+            raise NotImplementedError("< operator only valid for WordFamily comparisons.")
         # First compares the amount of words
         if len(self.words) < len(other.words):
             return True
@@ -419,11 +434,6 @@ def get_feedback_colors(secret_word, guessed_word):
           - Letters not in secret_word are marked with NOT_IN_WORD_COLOR. The list will be of
             length 5 with the ANSI coloring in each index as the returned value.
     """
-    # feedback = [None] * NUM_LETTERS
-
-    # # Modify this! This is just starter code.
-    # for i in range(NUM_LETTERS):
-    #     feedback[i] = WRONG_SPOT_COLOR
 
     index_list = [0,1,2,3,4]
     feedback = [None] * NUM_LETTERS
@@ -493,7 +503,7 @@ def get_feedback(remaining_secret_words, guessed_word):
 
     color_len = len(feedback_colors)
     for j in range(color_len):
-    # Creating grouped list of words for every iteration and checking to 
+    # Creating grouped list of words for every iteration and checking to
     # See if the feedback for that word is equal to the current color
         word_list = []
         current_color = feedback_colors[j]
@@ -501,11 +511,11 @@ def get_feedback(remaining_secret_words, guessed_word):
         # Looping through all words
         for k in range(secret_wordlen):
             if get_feedback_colors(remaining_secret_words[k], guessed_word) == current_color:
-                word_list.append(remaining_secret_words[k])           
+                word_list.append(remaining_secret_words[k])
         # Creating new families based on each feedback scheme and the
         # words that match that scheme
         new_family = WordFamily(current_color, word_list)
-        family_list.append(new_family)   
+        family_list.append(new_family)
     # Sorts words then grabs the words from the hardest word family
     sorted_fam = fast_sort(family_list)
     remaining_secret_words = (sorted_fam[0]).words
