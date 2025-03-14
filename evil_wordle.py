@@ -225,18 +225,21 @@ class Keyboard:
                 # If char is the current letter and the corresponding color is green, then
                 # The char is updated to have the correct color
                 if key == current_letter and current_color == CORRECT_COLOR:
-                    self.colors[key] = current_color
+                    self.colors[key] = CORRECT_COLOR
                 # If char is the current letter and color is wrong spot color, updates
                 # Only if char does not have the correct color
                 elif key == current_letter and current_color == WRONG_SPOT_COLOR:
                     if self.colors[key] != CORRECT_COLOR:
                         self.colors[key] = WRONG_SPOT_COLOR
                 elif key == current_letter and current_color == NOT_IN_WORD_COLOR:
-                    if self.colors[key] != CORRECT_COLOR and \
-                    self.colors[key] != WRONG_SPOT_COLOR:
-                        self.colors[key] = NOT_IN_WORD_COLOR      
-                else:
-                    self.colors[key] = NO_COLOR
+                    if self.colors[key] != CORRECT_COLOR and self.colors[key] != WRONG_SPOT_COLOR:
+                        self.colors[key] = NOT_IN_WORD_COLOR
+                
+                # elif key == current_letter and current_color == NOT_IN_WORD_COLOR:
+                #     if self.colors[key] != CORRECT_COLOR and \
+                #     self.colors[key] != WRONG_SPOT_COLOR:
+                #         self.colors[key] = NOT_IN_WORD_COLOR      
+         
         #     counter = 0
         #      # iterates through the first 10 letters
         # self.keyboard = ""
@@ -367,9 +370,13 @@ class WordFamily:
         # First compares the amount of words
         if len(self.words) < len(other.words):
             return True
+        if len(self.words) > len(other.words):
+            return False
         # Then compares difficulty scores
         if self.difficulty < other.difficulty:
             return True
+        if self.difficulty > other.difficulty:
+            return False
         # Finally compares lexicographical order
         if self.feedback_colors < other.feedback_colors:
             return True
