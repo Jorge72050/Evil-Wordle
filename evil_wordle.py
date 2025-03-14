@@ -49,13 +49,13 @@ INVALID_INPUT = "Bad input detected. Please try again."
 
 class Keyboard:
     """
-    The Keyboard class displays and updates a text-based self.keyboard1 that prints 
-    after every guess. The colors of the self.keyboard1 letters are updated per guess 
+    The Keyboard class displays and updates a text-based keyboard1 that prints 
+    after every guess. The colors of the keyboard1 letters are updated per guess 
     to reflect which guessed letters are correctly placed, incorrectly placed, 
     or not present in the secret word. 
 
     Instance Variables:
-        rows: A tuple of strings, each strings representing a row of letters on the self.keyboard1.
+        rows: A tuple of strings, each strings representing a row of letters on the keyboard1.
         colors: A dictionary mapping each letter to its current feedback color.
     """
 
@@ -66,16 +66,136 @@ class Keyboard:
         """
         self.rows = ("qwertyuiop", "asdfghjkl", "zxcvbnm")
         self.colors = {letter: NO_COLOR for letter in "qwertyuiopasdfghjklzxcvbnm"}
+        self.keyboard = ""
 
     # TODO: Modify this method. You may delete this comment when you are done.
+    # def update(self, feedback_colors, guessed_word):
+
+    #     """
+    #     Updates the color of each letter on the keyboard1 based on feedback from a guessed word.
+
+    #     If a letter's feedback color is `CORRECT_COLOR`, the letter on the keyboard1 
+    #     is updated. If the color is `WRONG_SPOT_COLOR`, the color updates only 
+    #     if the keyboard1's current color for that letter is not `CORRECT_COLOR`. 
+    #     Letters marked with `NO_COLOR` retain that color unless any feedback 
+    #     changes it.
+
+    #     pre:
+    #         feedback_colors: A tuple of color ANSI escape codes indicating 
+    #         feedback for each letter. len(feedback_colors) == len(guessed_word). 
+    #         Each item in feedback_colors must be a valid color constant.
+    #         guessed_word:  A list of string characters; the word guessed by the user.
+
+    #     post: None
+    #     """
+
+    #     # feedback is a list of colors with each index containing the color of the corresponding character in guessed_word
+    #     # returns the colored word in a single string
+    #     colored_word = color_word(feedback_colors, guessed_word)
+    #     keyboard1 = list("qwertyuiopasdfghjklzxcvbnm")
+    #     keyboard_len = len(keyboard1)
+    #     word_len = len(guessed_word)
+
+    #     # Looping through all 5 indexes
+    #     for i in range(word_len):
+
+    #         # Setting current letter and corresponding color
+    #         current_letter = guessed_word[i]
+    #         current_color = feedback_colors[i]
+    #         current = colored_word[i]
+    #         for j in range(keyboard_len):
+
+    #             # If char is the current letter and the corresponding color is green, then
+    #             # The char is updated to have the correct color
+    #             if keyboard1[j] == current_letter and current_color == CORRECT_COLOR:
+    #                 keyboard1[j] = current
+    #             # If char is the current letter and color is wrong spot color, updates
+    #             # Only if char does not have the correct color
+    #             elif keyboard1[j] == current_letter and current_color == WRONG_SPOT_COLOR:
+    #                 if keyboard1[j] != color_word(CORRECT_COLOR, keyboard1[j]):
+    #                     keyboard1[j] = current
+    #             elif keyboard1[j] == current_letter and current_color == NOT_IN_WORD_COLOR:
+    #                 if keyboard1[j] != color_word(CORRECT_COLOR, keyboard1[j]) and \
+    #                 keyboard1[j] != color_word(WRONG_SPOT_COLOR, keyboard1[j]):
+    #                     keyboard1[j] = current
+                        
+    #             # else:
+    #             #     keyboard1[j] = current
+        
+    #     new_keyboard = ""
+    #     counter = 0
+    #          # iterates through the first 10 letters
+    #     for m in range(10):
+    #         new_keyboard += keyboard1[m] + " "
+    #         counter += 1
+    #     new_keyboard = new_keyboard[:-1] # gets rid of last space of row
+    #     new_keyboard += "\n "
+    #     # counter should be 10, iterates through the next 9 letters
+    #     for m in range(9):
+    #         new_keyboard += keyboard1[counter] + " "
+    #         counter += 1
+    #     new_keyboard = keyboard1[:-1] # gets rid of last space of row
+    #     new_keyboard += "\n   "
+    #     # counter should be 19, iterates through the next 7 letters
+    #     for m in range(7):
+    #         new_keyboard += keyboard1[counter] + " "
+    #         counter += 1
+    #     new_keyboard = new_keyboard[:-1] # gets rid of last space of row
+
+    # # TODO: Modify this method. You may delete this comment when you are done.
+    # def __str__(self):
+    #     """
+    #     Returns a string representation of the keyboard1, showing each letter in its
+    #     corresponding color. Each row of the keyboard1 is formatted for readability,
+    #     with spacing adjusted for alignment. Color each individual letter using color_word()
+    #     based on the colors in the dictionary.
+
+    #     The first row has no leading spaces.
+    #     The second keyboard1 row has 1 leading space.
+    #     The third keyboard1 row has 3 leading spaces.
+
+    #     Here is the print format (without the ANSI coloring):
+
+    #     q w e r t y u i o p
+    #      a s d f g h j k l
+    #        z x c v b n m
+
+    #     pre: None
+    #     post: Returns a formatted string with each letter colored according to feedback
+    #           and arranged to match a typical keyboard1 layout.
+    #     """
+
+    #     #All letters are colored gray
+    #     all_letters= color_word(NO_COLOR,"qwertyuiopasdfghjklzxcvbnm")
+    #     self.keyboard = ""
+    #     counter = 0
+    #          # iterates through the first 10 letters
+    #     for i in range(10):
+    #         self.keyboard += all_letters[i] + " "
+    #         counter += 1
+    #     self.keyboard = self.keyboard[:-1] # gets rid of last space of row
+    #     self.keyboard += "\n "
+    #     # counter should be 10, iterates through the next 9 letters
+    #     for i in range(9):
+    #         self.keyboard += all_letters[counter] + " "
+    #         counter += 1
+    #     self.keyboard = self.keyboard[:-1] # gets rid of last space of row
+    #     self.keyboard += "\n   "
+    #     # counter should be 19, iterates through the next 7 letters
+    #     for i in range(7):
+    #         self.keyboard += all_letters[counter] + " "
+    #         counter += 1
+    #     self.keyboard = self.keyboard[:-1] # gets rid of last space of row
+
+    #     return self.keyboard
+
     def update(self, feedback_colors, guessed_word):
 
         """
-        Updates the color of each letter on the self.keyboard1 based on feedback from a guessed word.
+        Updates the color of each letter on the keysed on feedback from a guessed word.
 
-        If a letter's feedback color is `CORRECT_COLOR`, the letter on the self.keyboard1 
-        is updated. If the color is `WRONG_SPOT_COLOR`, the color updates only 
-        if the self.keyboard1's current color for that letter is not `CORRECT_COLOR`. 
+        If a letter's feedback color is `CORRECT_COLOR`, the letter on the key       is updated. If the color is `WRONG_SPOT_COLOR`, the color updates only 
+        if the keycurrent color for that letter is not `CORRECT_COLOR`. 
         Letters marked with `NO_COLOR` retain that color unless any feedback 
         changes it.
 
@@ -91,8 +211,6 @@ class Keyboard:
         # feedback is a list of colors with each index containing the color of the corresponding character in guessed_word
         # returns the colored word in a single string
         colored_word = color_word(feedback_colors, guessed_word)
-        self.keyboard1 = list("qwertyuiopasdfghjklzxcvbnm")
-        keyboard_len = len(self.keyboard1)
         word_len = len(guessed_word)
 
         # Looping through all 5 indexes
@@ -101,60 +219,55 @@ class Keyboard:
             # Setting current letter and corresponding color
             current_letter = guessed_word[i]
             current_color = feedback_colors[i]
-            current = colored_word[i]
-            for j in range(keyboard_len):
+           # current = colored_word[i]
+            for key in self.colors:
 
                 # If char is the current letter and the corresponding color is green, then
                 # The char is updated to have the correct color
-                if self.keyboard1[j] == current_letter and current_color == CORRECT_COLOR:
-                    self.keyboard1[j] = current
+                if key == current_letter and current_color == CORRECT_COLOR:
+                    self.colors[key] = current_color
                 # If char is the current letter and color is wrong spot color, updates
                 # Only if char does not have the correct color
-                elif self.keyboard1[j] == current_letter and current_color == WRONG_SPOT_COLOR:
-                    if self.keyboard1[j] != color_word(CORRECT_COLOR, self.keyboard1[j]):
-                        self.keyboard1[j] = current
-                elif self.keyboard1[j] == current_letter and current_color == NOT_IN_WORD_COLOR:
-                    if self.keyboard1[j] != color_word(CORRECT_COLOR, self.keyboard1[j]) and \
-                    self.keyboard1[j] != color_word(WRONG_SPOT_COLOR, self.keyboard1[j]):
-                        self.keyboard1[j] = current
-                # else:
-                #     self.keyboard1[j] = current
-        
-        # new_keyboard = ""
-        # counter = 0
+                elif key == current_letter and current_color == WRONG_SPOT_COLOR:
+                    if self.colors[key] != CORRECT_COLOR:
+                        self.colors[key] = WRONG_SPOT_COLOR
+                elif key == current_letter and current_color == NOT_IN_WORD_COLOR:
+                    if self.colors[key] != CORRECT_COLOR and \
+                    self.colors[key] != WRONG_SPOT_COLOR:
+                        self.colors[key] = NOT_IN_WORD_COLOR      
+                else:
+                    self.colors[key] = NO_COLOR
+        #     counter = 0
         #      # iterates through the first 10 letters
-        # for m in range(10):
-        #     new_keyboard += self.keyboard1[m] + " "
+        # self.keyboard = ""
+        # for letter in self.rows[0]:
+        #     self.keyboard += color_word(self.colors[letter], letter) + " "
         #     counter += 1
-        # new_keyboard = new_keyboard[:-1] # gets rid of last space of row
-        # new_keyboard += "\n "
+        # self.keyboard = self.keyboard[:-1] # gets rid of last space of row
+        # self.keyboard += "\n "
         # # counter should be 10, iterates through the next 9 letters
-        # for m in range(9):
-        #     new_keyboard += self.keyboard1[counter] + " "
+        # for letter in self.rows[1]:
+        #     self.keyboard += color_word(self.colors[letter], letter) + " "
         #     counter += 1
-        # new_keyboard = self.keyboard1[:-1] # gets rid of last space of row
-        # new_keyboard += "\n   "
+        # self.keyboard = self.keyboard[:-1] # gets rid of last space of row
+        # self.keyboard += "\n   "
         # # counter should be 19, iterates through the next 7 letters
-        # for m in range(7):
-        #     new_keyboard += self.keyboard1[counter] + " "
+        # for letter in self.rows[2]:
+        #     self.keyboard += color_word(self.colors[letter], letter) + " "
         #     counter += 1
-        # new_keyboard = new_keyboard[:-1] # gets rid of last space of row
-
-        # self.keyboard = new_keyboard
-
-        # Reconstruct self.keyboard1 using newly colored letters.
-
+        # self.keyboard = self.keyboard[:-1] # gets rid of last space of row
+        
     # TODO: Modify this method. You may delete this comment when you are done.
     def __str__(self):
         """
-        Returns a string representation of the self.keyboard1, showing each letter in its
-        corresponding color. Each row of the self.keyboard1 is formatted for readability,
+        Returns a string representation of the keyhowing each letter in its
+        corresponding color. Each row of the key formatted for readability,
         with spacing adjusted for alignment. Color each individual letter using color_word()
         based on the colors in the dictionary.
 
         The first row has no leading spaces.
-        The second self.keyboard1 row has 1 leading space.
-        The third self.keyboard1 row has 3 leading spaces.
+        The second keyw has 1 leading space.
+        The third keyw has 3 leading spaces.
 
         Here is the print format (without the ANSI coloring):
 
@@ -164,32 +277,33 @@ class Keyboard:
 
         pre: None
         post: Returns a formatted string with each letter colored according to feedback
-              and arranged to match a typical self.keyboard1 layout.
+              and arranged to match a typical keyyout.
         """
 
-        # All letters are colored gray
-        #self.keyboard1 = color_word(NO_COLOR,"qwertyuiopasdfghjklzxcvbnm")
-        self.keyboard = ""
+        #All letters are colored gray
+        all_letters= color_word(NO_COLOR,"qwertyuiopasdfghjklzxcvbnm")
         counter = 0
+        self.keyboard = ""
              # iterates through the first 10 letters
-        for i in range(10):
-            self.keyboard += self.keyboard1[i] + " "
+        for letter in self.rows[0]:
+            self.keyboard += color_word(self.colors[letter], letter) + " "
             counter += 1
         self.keyboard = self.keyboard[:-1] # gets rid of last space of row
         self.keyboard += "\n "
         # counter should be 10, iterates through the next 9 letters
-        for i in range(9):
-            self.keyboard += self.keyboard1[counter] + " "
+        for letter in self.rows[1]:
+            self.keyboard += color_word(self.colors[letter], letter) + " "
             counter += 1
         self.keyboard = self.keyboard[:-1] # gets rid of last space of row
         self.keyboard += "\n   "
         # counter should be 19, iterates through the next 7 letters
-        for i in range(7):
-            self.keyboard += self.keyboard1[counter] + " "
+        for letter in self.rows[2]:
+            self.keyboard += color_word(self.colors[letter], letter) + " "
             counter += 1
         self.keyboard = self.keyboard[:-1] # gets rid of last space of row
 
         return self.keyboard
+
 
 class WordFamily:
     """
@@ -568,7 +682,7 @@ def main():
 
     print_explanation(attempts)
 
-    self.keyboard1 = Keyboard()
+    keyboard1 = Keyboard()
     attempt = 1
 
     while attempt <= attempts:
@@ -588,8 +702,8 @@ def main():
         feedback = color_word(feedback_colors, guess)
         print(" " * (len(prompt) - 1), feedback)
 
-        self.keyboard1.update(feedback_colors, guess)
-        print(self.keyboard1)
+        keyboard1.update(feedback_colors, guess)
+        print(keyboard1)
         print()
 
         if len(secret_words) == 1 and guess == secret_words[0]:
