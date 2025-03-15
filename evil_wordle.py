@@ -182,7 +182,6 @@ class WordFamily:
         self.feedback_colors = feedback_colors
         self.words = words
         self.difficulty = 0
-        # TODO: implement the difficulty calculation here.
         len_tup = len(feedback_colors)
         for i in range(len_tup):
             if feedback_colors[i] == NOT_IN_WORD_COLOR:
@@ -499,7 +498,7 @@ def get_feedback(remaining_secret_words, guessed_word):
         family_list.append(new_family)
     # Sorts words then grabs the words from the hardest word family
     sorted_fam = fast_sort(family_list)
-    # ## Need to make feedback_colors into a tuple
+    # ## Need to make feedback_colors into a tuple.
     final_return = (tuple(sorted_fam[0].feedback_colors), sorted_fam[0].words)
     return final_return
 
