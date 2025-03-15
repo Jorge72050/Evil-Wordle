@@ -46,7 +46,6 @@ NUM_LETTERS = 5
 
 INVALID_INPUT = "Bad input detected. Please try again."
 
-
 class Keyboard:
     """
     The Keyboard class displays and updates a text-based keyboard1 that prints 
@@ -68,133 +67,13 @@ class Keyboard:
         self.colors = {letter: NO_COLOR for letter in "qwertyuiopasdfghjklzxcvbnm"}
         self.keyboard = ""
 
-    # TODO: Modify this method. You may delete this comment when you are done.
-    # def update(self, feedback_colors, guessed_word):
-
-    #     """
-    #     Updates the color of each letter on the keyboard1 based on feedback from a guessed word.
-
-    #     If a letter's feedback color is `CORRECT_COLOR`, the letter on the keyboard1 
-    #     is updated. If the color is `WRONG_SPOT_COLOR`, the color updates only 
-    #     if the keyboard1's current color for that letter is not `CORRECT_COLOR`. 
-    #     Letters marked with `NO_COLOR` retain that color unless any feedback 
-    #     changes it.
-
-    #     pre:
-    #         feedback_colors: A tuple of color ANSI escape codes indicating 
-    #         feedback for each letter. len(feedback_colors) == len(guessed_word). 
-    #         Each item in feedback_colors must be a valid color constant.
-    #         guessed_word:  A list of string characters; the word guessed by the user.
-
-    #     post: None
-    #     """
-
-    #     # feedback is a list of colors with each index containing the color of the corresponding character in guessed_word
-    #     # returns the colored word in a single string
-    #     colored_word = color_word(feedback_colors, guessed_word)
-    #     keyboard1 = list("qwertyuiopasdfghjklzxcvbnm")
-    #     keyboard_len = len(keyboard1)
-    #     word_len = len(guessed_word)
-
-    #     # Looping through all 5 indexes
-    #     for i in range(word_len):
-
-    #         # Setting current letter and corresponding color
-    #         current_letter = guessed_word[i]
-    #         current_color = feedback_colors[i]
-    #         current = colored_word[i]
-    #         for j in range(keyboard_len):
-
-    #             # If char is the current letter and the corresponding color is green, then
-    #             # The char is updated to have the correct color
-    #             if keyboard1[j] == current_letter and current_color == CORRECT_COLOR:
-    #                 keyboard1[j] = current
-    #             # If char is the current letter and color is wrong spot color, updates
-    #             # Only if char does not have the correct color
-    #             elif keyboard1[j] == current_letter and current_color == WRONG_SPOT_COLOR:
-    #                 if keyboard1[j] != color_word(CORRECT_COLOR, keyboard1[j]):
-    #                     keyboard1[j] = current
-    #             elif keyboard1[j] == current_letter and current_color == NOT_IN_WORD_COLOR:
-    #                 if keyboard1[j] != color_word(CORRECT_COLOR, keyboard1[j]) and \
-    #                 keyboard1[j] != color_word(WRONG_SPOT_COLOR, keyboard1[j]):
-    #                     keyboard1[j] = current
-                        
-    #             # else:
-    #             #     keyboard1[j] = current
-        
-    #     new_keyboard = ""
-    #     counter = 0
-    #          # iterates through the first 10 letters
-    #     for m in range(10):
-    #         new_keyboard += keyboard1[m] + " "
-    #         counter += 1
-    #     new_keyboard = new_keyboard[:-1] # gets rid of last space of row
-    #     new_keyboard += "\n "
-    #     # counter should be 10, iterates through the next 9 letters
-    #     for m in range(9):
-    #         new_keyboard += keyboard1[counter] + " "
-    #         counter += 1
-    #     new_keyboard = keyboard1[:-1] # gets rid of last space of row
-    #     new_keyboard += "\n   "
-    #     # counter should be 19, iterates through the next 7 letters
-    #     for m in range(7):
-    #         new_keyboard += keyboard1[counter] + " "
-    #         counter += 1
-    #     new_keyboard = new_keyboard[:-1] # gets rid of last space of row
-
-    # # TODO: Modify this method. You may delete this comment when you are done.
-    # def __str__(self):
-    #     """
-    #     Returns a string representation of the keyboard1, showing each letter in its
-    #     corresponding color. Each row of the keyboard1 is formatted for readability,
-    #     with spacing adjusted for alignment. Color each individual letter using color_word()
-    #     based on the colors in the dictionary.
-
-    #     The first row has no leading spaces.
-    #     The second keyboard1 row has 1 leading space.
-    #     The third keyboard1 row has 3 leading spaces.
-
-    #     Here is the print format (without the ANSI coloring):
-
-    #     q w e r t y u i o p
-    #      a s d f g h j k l
-    #        z x c v b n m
-
-    #     pre: None
-    #     post: Returns a formatted string with each letter colored according to feedback
-    #           and arranged to match a typical keyboard1 layout.
-    #     """
-
-    #     #All letters are colored gray
-    #     all_letters= color_word(NO_COLOR,"qwertyuiopasdfghjklzxcvbnm")
-    #     self.keyboard = ""
-    #     counter = 0
-    #          # iterates through the first 10 letters
-    #     for i in range(10):
-    #         self.keyboard += all_letters[i] + " "
-    #         counter += 1
-    #     self.keyboard = self.keyboard[:-1] # gets rid of last space of row
-    #     self.keyboard += "\n "
-    #     # counter should be 10, iterates through the next 9 letters
-    #     for i in range(9):
-    #         self.keyboard += all_letters[counter] + " "
-    #         counter += 1
-    #     self.keyboard = self.keyboard[:-1] # gets rid of last space of row
-    #     self.keyboard += "\n   "
-    #     # counter should be 19, iterates through the next 7 letters
-    #     for i in range(7):
-    #         self.keyboard += all_letters[counter] + " "
-    #         counter += 1
-    #     self.keyboard = self.keyboard[:-1] # gets rid of last space of row
-
-    #     return self.keyboard
-
     def update(self, feedback_colors, guessed_word):
 
         """
         Updates the color of each letter on the keysed on feedback from a guessed word.
 
-        If a letter's feedback color is `CORRECT_COLOR`, the letter on the key       is updated. If the color is `WRONG_SPOT_COLOR`, the color updates only 
+        If a letter's feedback color is `CORRECT_COLOR`, the letter on the key 
+        is updated. If the color is `WRONG_SPOT_COLOR`, the color updates only 
         if the keycurrent color for that letter is not `CORRECT_COLOR`. 
         Letters marked with `NO_COLOR` retain that color unless any feedback 
         changes it.
@@ -207,21 +86,17 @@ class Keyboard:
 
         post: None
         """
-
-        # feedback is a list of colors with each index containing the color of the corresponding character in guessed_word
+        # feedback is a list of colors with each index containing the color of the
+        # corresponding character in guessed_word
         # returns the colored word in a single string
-        colored_word = color_word(feedback_colors, guessed_word)
         word_len = len(guessed_word)
-
         # Looping through all 5 indexes
         for i in range(word_len):
-
             # Setting current letter and corresponding color
             current_letter = guessed_word[i]
             current_color = feedback_colors[i]
            # current = colored_word[i]
             for key in self.colors:
-
                 # If char is the current letter and the corresponding color is green, then
                 # The char is updated to have the correct color
                 if key == current_letter and current_color == CORRECT_COLOR:
@@ -234,33 +109,6 @@ class Keyboard:
                 elif key == current_letter and current_color == NOT_IN_WORD_COLOR:
                     if self.colors[key] != CORRECT_COLOR and self.colors[key] != WRONG_SPOT_COLOR:
                         self.colors[key] = NOT_IN_WORD_COLOR
-                
-                # elif key == current_letter and current_color == NOT_IN_WORD_COLOR:
-                #     if self.colors[key] != CORRECT_COLOR and \
-                #     self.colors[key] != WRONG_SPOT_COLOR:
-                #         self.colors[key] = NOT_IN_WORD_COLOR      
-         
-        #     counter = 0
-        #      # iterates through the first 10 letters
-        # self.keyboard = ""
-        # for letter in self.rows[0]:
-        #     self.keyboard += color_word(self.colors[letter], letter) + " "
-        #     counter += 1
-        # self.keyboard = self.keyboard[:-1] # gets rid of last space of row
-        # self.keyboard += "\n "
-        # # counter should be 10, iterates through the next 9 letters
-        # for letter in self.rows[1]:
-        #     self.keyboard += color_word(self.colors[letter], letter) + " "
-        #     counter += 1
-        # self.keyboard = self.keyboard[:-1] # gets rid of last space of row
-        # self.keyboard += "\n   "
-        # # counter should be 19, iterates through the next 7 letters
-        # for letter in self.rows[2]:
-        #     self.keyboard += color_word(self.colors[letter], letter) + " "
-        #     counter += 1
-        # self.keyboard = self.keyboard[:-1] # gets rid of last space of row
-        
-    # TODO: Modify this method. You may delete this comment when you are done.
     def __str__(self):
         """
         Returns a string representation of the keyhowing each letter in its
@@ -282,9 +130,7 @@ class Keyboard:
         post: Returns a formatted string with each letter colored according to feedback
               and arranged to match a typical keyyout.
         """
-
         #All letters are colored gray
-        all_letters= color_word(NO_COLOR,"qwertyuiopasdfghjklzxcvbnm")
         counter = 0
         self.keyboard = ""
              # iterates through the first 10 letters
@@ -304,10 +150,7 @@ class Keyboard:
             self.keyboard += color_word(self.colors[letter], letter) + " "
             counter += 1
         self.keyboard = self.keyboard[:-1] # gets rid of last space of row
-
         return self.keyboard
-
-
 class WordFamily:
     """
     A class representing a group or 'family' of words that match a specific 
@@ -325,7 +168,6 @@ class WordFamily:
 
     COLOR_DIFFICULTY = {CORRECT_COLOR: 0, WRONG_SPOT_COLOR: 1, NOT_IN_WORD_COLOR: 2}
 
-    # TODO: Modify this method. You may delete this comment when you are done.
     def __init__(self, feedback_colors, words):
         """
         Initializes the WordFamily based on the feedback colors list. The 
@@ -350,8 +192,6 @@ class WordFamily:
             elif feedback_colors[i] == CORRECT_COLOR:
                 self.difficulty += 0
 
-
-    # TODO: Modify this method. You may delete this comment when you are done.
     def __lt__(self, other):
         """
         Compares this WordFamily object with another by prioritizing a larger
@@ -364,18 +204,19 @@ class WordFamily:
             raises NotImplementedError with the message: "< operator only valid 
             for WordFamily comparisons." if `other` is not a WordFamily instance.
         """
-        # Raises an error if other is not a WordFamily object
+
+ # Raises an error if other is not a WordFamily object
         if not isinstance(other, WordFamily):
             raise NotImplementedError("< operator only valid for WordFamily comparisons.")
         # First compares the amount of words
-        if len(self.words) < len(other.words):
-            return True
         if len(self.words) > len(other.words):
+            return True
+        if len(self.words) < len(other.words):
             return False
         # Then compares difficulty scores
-        if self.difficulty < other.difficulty:
-            return True
         if self.difficulty > other.difficulty:
+            return True
+        if self.difficulty < other.difficulty:
             return False
         # Finally compares lexicographical order
         if self.feedback_colors < other.feedback_colors:
@@ -393,7 +234,6 @@ class WordFamily:
     # DO NOT change this method.
     def __repr__(self):
         return str(self)
-
 
 # DO NOT change this function
 def print_explanation(attempts):
@@ -426,7 +266,6 @@ def print_explanation(attempts):
     print("is not in the word in any spot.")
     print()
 
-
 # DO NOT change this function
 def color_word(colors, word):
     """
@@ -450,7 +289,6 @@ def color_word(colors, word):
         colored_word[i] = f"{colors[i]}{character}{NO_COLOR}"
 
     return "".join(colored_word)
-
 
 # DO NOT change this function
 def get_attempt_label(attempt_number):
@@ -509,8 +347,6 @@ def prepare_game():
 
     return attempts, valid_words
 
-
-# TODO: Modify this function. You may delete this comment when you are done.
 def fast_sort(lst):
     """
     Returns a new list with the same elements as lst sorted in ascending order. You MUST implement
@@ -546,7 +382,9 @@ def fast_sort(lst):
 
     # iterating through each elem in split lists
     while left_index < len(left) and right_index < len(right):
-        if left[left_index] <= right[right_index]:
+        #if left[left_index] <= right[right_index]:
+        if left[left_index] < right[right_index]:
+
             final_lst[final_index] = left[left_index]
             left_index += 1
         else:
@@ -563,10 +401,6 @@ def fast_sort(lst):
         final_index += 1
     return final_lst
 
-
-
-
-# TODO: Modify this helper function. You may delete this comment when you are done.
 def get_feedback_colors(secret_word, guessed_word):
     """
     Processes the guess and generates the colored feedback based on the potential secret word. This
@@ -618,8 +452,6 @@ def get_feedback_colors(secret_word, guessed_word):
     # You do not have to change this return statement
     return feedback
 
-
-# TODO: Modify this function. You may delete this comment when you are done.
 def get_feedback(remaining_secret_words, guessed_word):
     """
     Processes the guess and generates the colored feedback based on the hardest word family. Use
@@ -644,11 +476,11 @@ def get_feedback(remaining_secret_words, guessed_word):
     family_list = []
     secret_wordlen = len(remaining_secret_words)
 
-    # Loop to get all possible feedback colors
+    # Loop to get all possible feedback colors and exclude repeats
     for i in range(secret_wordlen):
         color = get_feedback_colors(remaining_secret_words[i], guessed_word)
         if color not in feedback_colors:
-            feedback_colors.append(feedback_colors)
+            feedback_colors.append(color)
 
     color_len = len(feedback_colors)
     for j in range(color_len):
@@ -667,9 +499,9 @@ def get_feedback(remaining_secret_words, guessed_word):
         family_list.append(new_family)
     # Sorts words then grabs the words from the hardest word family
     sorted_fam = fast_sort(family_list)
-    remaining_secret_words = (sorted_fam[0]).words
-    return feedback_colors, remaining_secret_words
-
+    # ## Need to make feedback_colors into a tuple
+    final_return = (tuple(sorted_fam[0].feedback_colors), sorted_fam[0].words)
+    return final_return
 
 # DO NOT modify this function.
 def main():
